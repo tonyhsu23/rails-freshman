@@ -42,8 +42,36 @@ section {
   margin-top: 20px;
   }
 
-footer {
-  margin-left: 150px;
-  margin-right: 150px;
+footer { 
   padding: 30px 0;
+  background-color: #F8F8F8;
+  p {
+    color: #777;
+    padding-left: 30px;
+  }
+}
+
+.big { 
+  background: url(ferris_wheel.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.jumbotron {
+  height: 600px;
+  h1 {
+    padding-top: 90px;
+    color: white;
+    text-align: center;
+  }
+  h3 {
+    color: white;
+    font-style: bold;
+    text-align: center;
+  }
+  .start-btn {
+    padding-top: 10px
+  }
 }

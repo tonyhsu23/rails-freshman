@@ -31,6 +31,10 @@ gem "powder"
 
 gem 'bootstrap-sass'
 
+gem 'devise'
+
+gem "simple_form", "~> 3.0.1"
+
 group :development do
   gem 'rails_layout'
 end
