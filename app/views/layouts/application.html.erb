@@ -9,18 +9,19 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
+    <div id="wrap">
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
 
-     <%= render 'layouts/messages' %>
-     <%= yield %>
-        
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+       
+     </div>   
   </body>
 
-  <hr>
-  <footer>
+  <div id="footer">
     <p>&copy; Rails Freshman 2014</p>
-  </footer>
+  </div>
   
 </html>
