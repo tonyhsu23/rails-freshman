@@ -42,6 +42,42 @@ section {
   margin-top: 20px;
   }
 
+.navbar {
+  margin-bottom: 0px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  background-color: white;
+}
+.navbar .nav > li > a {
+  font-size: 16px;
+  color: #163F57;
+}
+.navbar .nav > li > a:hover {
+  color: #497DBD;
+}
+.navbar-static-top .navbar-brand {
+  color: #163F57;
+  font-size: 20px;
+  font-style: bold;
+}
+.navbar-static-top .navbar-brand:hover {
+  color: #497DBD;
+}
+
+/* space between navbar and container */
+.space {
+  margin-top: 30px;
+}
+
+/* white box to seperate from body and background */
+.box {
+  margin-top: 30px;
+  padding-bottom: 30px;
+  background-color: white;
+  border: 1px solid #D3D3D3;
+}
+
+/* big background photo */
 .big { 
   background: url(ferris_wheel.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -71,6 +107,7 @@ section {
 html,
 body {
   height: 100%;
+  background-color: #F9F9F9;
   /* The html and body elements cannot have any padding or margin. */
 }
 
@@ -89,7 +126,7 @@ body {
   padding: 30px 0;
   color: #999;
   text-align: center;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5e5;
+  background-color: #ECECEC;
+  border-top: 1px solid #D3D3D3;
 }
 
