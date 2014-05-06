@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 box">
+  	<h2 align="center">Share A Link</h2><hr>
+    <%= simple_form_for @link do |f| %>
+      <div class="form-group">
+	      <%= f.input :url, label: "Link URL", required: true, autofocus: true, input_html: { :class => "form-control", id: "url" } %>
+	    </div>
+
+    <br><div class="selector-wrapper"></div><br>
+
+	  <div class="form-group">
+      <font size="3"><strong>Category</strong></font><br>
+	    <%= f.collection_radio_buttons :tag, [['Gem', 'Gem'] ,['News', 'News'], ['Teaching', 'Teaching'], ['Discussion', 'Discussion']], :first, :last, required: true %>
+	  </div>
+
+	  <hr>
+	  <div class="form-actions">
+      <%= f.button :submit, "Share", class: "btn btn-primary btn-block" %>
+  	</div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  // Set up preview.
+  $('#url').preview({key:'0cc898dfddd7445bb6761305d7ae7b5f'});
+
+  $('form').on('submit', function(){
+    $(this).addInputs($('#url').data('preview'));
+    return true;
+  });
+</script>

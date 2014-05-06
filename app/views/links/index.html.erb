@@ -3,53 +3,41 @@
   <div class="row row-offcanvas row-offcanvas-right">
     <div class="col-xs-12 col-sm-9">
       <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="...">
-            <div class="caption">
-              <h3>Title</h3>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-              <p><a href="#" class="btn btn-primary" role="button">More</a> <a href="#" class="btn btn-default" role="button">Share</a></p>
+
+        <% @links.each do |link| %>
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <font class="alert-success"><%= link.tag %></font>
+              <br><%= link_to(image_tag(link.thumbnail, size: "120x120"), link.url, target: "_blank") %>
+              <div class="caption">
+                <h3><%= link_to(link.title, link.url, target: "_blank") %></h3>
+                <p><%= link.content %></p>
+                <p align="right">
+                  <font color="#163F57"><strong>shared by Tony</strong></font>
+                </p> 
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="...">
-            <div class="caption">
-              <h3>Title</h3>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-              <p><a href="#" class="btn btn-primary" role="button">更多</a> <a href="#" class="btn btn-default" role="button">分享</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img data-src="holder.js/300x200" alt="...">
-            <div class="caption">
-              <h3>Title</h3>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. </p>
-              <p><a href="#" class="btn btn-primary" role="button">更多</a> <a href="#" class="btn btn-default" role="button">分享</a></p>
-            </div>
-          </div>
-        </div>
+        <% end %>
+
       </div><!--/row-->
     </div><!--/span-->
 
     <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-      <font size="4" color="#999">Share A Link</font>
-      <div class="input-group">
-    	<input type="text" class="form-control">
-      	<span class="input-group-btn">
-          <button class="btn btn-primary" type="button">share</button>
-      	</span>
-      </div><!-- /input-group -->
+
+      <%= link_to("Share A Link", new_link_path, class: "btn btn-primary") %>
       <hr>
+      
       <div class="list-group">
-        <a href="#" class="list-group-item active">Gem</a>
-        <a href="#" class="list-group-item">News</a>
-        <a href="#" class="list-group-item">Teaching</a>
-        <a href="#" class="list-group-item">Discussion</a>
+        <%= link_to("All", "#", class: "list-group-item all active", remote: true) %>
+        
+      </div>
+
+      <div class="list-group">
+        <%= link_to("Gem", "#", class: "list-group-item gem", remote: true) %>
+        <%= link_to("News", "#", class: "list-group-item news", remote: true) %>
+        <%= link_to("Teaching", "#", class: "list-group-item teach", remote: true) %>
+        <%= link_to("Discussion", "#", class: "list-group-item discuss", remote: true) %>
       </div>
     </div><!--/span-->
   </div><!--/row-->
@@ -80,3 +68,65 @@
     </ul>
   </div>
 </div><!--/.container-->
+
+<script type="text/javascript">
+  $('.all').click( function(){ 
+    $.ajax({
+      type:'get',
+      url: '/links', 
+      dataType: 'HTML', 
+      data: {tag: 'all'},
+      success : function(data){
+        $("body").html(data);
+      }
+    }); 
+  });
+
+  $('.gem').click( function(){ 
+    $.ajax({
+      type:'get',
+      url: '/links', 
+      dataType: 'HTML', 
+      data: {tag: 'gem'},
+      success : function(data){
+        $("body").html(data);
+      }
+    }); 
+  });
+
+  $('.news').click( function(){ 
+    $.ajax({
+      type:'get',
+      url: '/links', 
+      dataType: 'HTML', 
+      data: {tag: 'news'},
+      success : function(data){
+        $("body").html(data);
+      }
+    }); 
+  });
+
+  $('.teach').click( function(){ 
+    $.ajax({
+      type:'get',
+      url: '/links', 
+      dataType: 'HTML', 
+      data: {tag: 'teach'},
+      success : function(data){
+        $("body").html(data);
+      }
+    }); 
+  });
+
+  $('.discuss').click( function(){ 
+    $.ajax({
+      type:'get',
+      url: '/links', 
+      dataType: 'HTML', 
+      data: {tag: 'discuss'},
+      success : function(data){
+        $("body").html(data);
+      }
+    }); 
+  });
+</script>
