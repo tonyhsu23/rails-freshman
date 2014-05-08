@@ -2,10 +2,11 @@
 <div class="container">
   <div class="row row-offcanvas row-offcanvas-right">
     <div class="col-xs-12 col-sm-9">
-      <div class="row">
+      <div class="row" id="contain">
 
-        <% @links.each do |link| %>
-          <div class="col-sm-6 col-md-4">
+        <% @links.each_with_index do |link, index| %>
+        
+          <div class="col-sm-6 col-md-4 grid">
             <div class="thumbnail">
               <font class="alert-success"><%= link.tag %></font>
               <br><%= link_to(image_tag(link.thumbnail, size: "120x120"), link.url, target: "_blank") %>
@@ -18,6 +19,7 @@
               </div>
             </div>
           </div>
+        
         <% end %>
 
       </div><!--/row-->
@@ -29,15 +31,15 @@
       <hr>
       
       <div class="list-group">
-        <%= link_to("All", "#", class: "list-group-item all active", remote: true) %>
+        <%= link_to("All", links_path, class: "list-group-item active") %>
         
       </div>
 
       <div class="list-group">
-        <%= link_to("Gem", "#", class: "list-group-item gem", remote: true) %>
-        <%= link_to("News", "#", class: "list-group-item news", remote: true) %>
-        <%= link_to("Teaching", "#", class: "list-group-item teach", remote: true) %>
-        <%= link_to("Discussion", "#", class: "list-group-item discuss", remote: true) %>
+        <%= link_to("Gem", links_path(tag: 'gem'), class: "list-group-item") %>
+        <%= link_to("News", links_path(tag: 'news'), class: "list-group-item") %>
+        <%= link_to("Teaching", links_path(tag: 'teach'), class: "list-group-item") %>
+        <%= link_to("Discussion", links_path(tag: 'discuss'), class: "list-group-item") %>
       </div>
     </div><!--/span-->
   </div><!--/row-->
@@ -70,63 +72,18 @@
 </div><!--/.container-->
 
 <script type="text/javascript">
-  $('.all').click( function(){ 
-    $.ajax({
-      type:'get',
-      url: '/links', 
-      dataType: 'HTML', 
-      data: {tag: 'all'},
-      success : function(data){
-        $("body").html(data);
-      }
-    }); 
-  });
 
-  $('.gem').click( function(){ 
-    $.ajax({
-      type:'get',
-      url: '/links', 
-      dataType: 'HTML', 
-      data: {tag: 'gem'},
-      success : function(data){
-        $("body").html(data);
-      }
-    }); 
-  });
+  $(document).ready(function() {
+    var $container = $('#contain');
+    // initialize Masonry after all images have loaded  
+    $container.imagesLoaded( function() {
+      $container.masonry({
+        // options
+        itemSelector: '.grid'
+      });
+    });
+  }); 
 
-  $('.news').click( function(){ 
-    $.ajax({
-      type:'get',
-      url: '/links', 
-      dataType: 'HTML', 
-      data: {tag: 'news'},
-      success : function(data){
-        $("body").html(data);
-      }
-    }); 
-  });
+  
 
-  $('.teach').click( function(){ 
-    $.ajax({
-      type:'get',
-      url: '/links', 
-      dataType: 'HTML', 
-      data: {tag: 'teach'},
-      success : function(data){
-        $("body").html(data);
-      }
-    }); 
-  });
-
-  $('.discuss').click( function(){ 
-    $.ajax({
-      type:'get',
-      url: '/links', 
-      dataType: 'HTML', 
-      data: {tag: 'discuss'},
-      success : function(data){
-        $("body").html(data);
-      }
-    }); 
-  });
 </script>

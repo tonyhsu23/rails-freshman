@@ -4,8 +4,6 @@ class LinksController < ApplicationController
   def index
     
     case params[:tag]
-    when 'all'
-        @links = Link.all.order('created_at desc')
       when 'gem'
         @links = Link.where("tag=?", "Gem").order('created_at desc')
       when 'news' 
@@ -14,8 +12,8 @@ class LinksController < ApplicationController
         @links = Link.where("tag=?", "Teaching").order('created_at desc') 
       when 'discuss'
         @links = Link.where("tag=?", "Discussion").order('created_at desc')
-    else
-      @links = Link.all.order('created_at desc')
+      else
+        @links = Link.all.order('created_at desc')
     end    
   	
   end
