@@ -4,30 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Rails Freshman" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Freshman" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    
+    <%= render 'layouts/includes' %>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" %>
-    <%= javascript_include_tag "http://cdn.embed.ly/jquery.embedly-3.0.5.min.js" %>
-    <%= javascript_include_tag "http://cdn.embed.ly/jquery.preview-0.3.2.min.js" %>
-    <%= javascript_include_tag "http://imagesloaded.desandro.com/imagesloaded.pkgd.min.js" %>
-    <%= javascript_include_tag "masonry.pkgd.min.js" %>
-    <%= stylesheet_link_tag("http://cdn.embed.ly/jquery.preview-0.3.2.css") %>
+    
   </head>
   <body>
     <div id="wrap">
+
       <header>
         <%= render 'layouts/navigation' %>
       </header>
 
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
        
      </div>   
   </body>
 
-  <div id="footer">
-    <p>&copy; Rails Freshman 2014</p>
-  </div>
-  
+  <%= render 'layouts/footer' %>
+
 </html>

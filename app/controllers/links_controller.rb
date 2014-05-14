@@ -1,6 +1,8 @@
 require 'uri'
 class LinksController < ApplicationController
 
+  before_action :login_required, only: [:new, :create]
+
   def index
     
     case params[:tag]
