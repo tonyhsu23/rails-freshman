@@ -2,4 +2,4 @@
 
 Learn Ruby on Rails by sharing ideas, thoughts and links.
 
-URL: http://morning-tundra-4324.herokuapp.com
+URL: http://railsfreshman.herokuapp.com
