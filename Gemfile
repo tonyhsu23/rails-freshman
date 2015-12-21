@@ -18,6 +18,7 @@ gem "omniauth"
 gem "omniauth-facebook"
 gem "auto-facebook"
 gem "settingslogic"
+gem "masonry-rails"
 
 group :development do
   gem 'rails_layout'
